@@ -4,6 +4,7 @@ import axios from 'axios';
 import { convertKeyValueToObject } from '../../../utils/helpers';
 import UrlEditor from '../../Panes/RequestUrl/UrlEditor';
 import RequestTabGroup from '../../Tab-Groups/RequestTabGroup';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 const keyPairInitState = [
   {
@@ -66,6 +67,7 @@ export default function Request({ setResponse, setLoading, loading }) {
         setReqMethod={setReqMethod}
         onInputSend={handleOnInputSend}
       />
+     
       <RequestTabGroup
         queryParams={queryParams}
         setQueryParams={setQueryParams}

@@ -5,9 +5,6 @@ import React from 'react';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
 
-
-
-const { Header } = Layout;
 export default function MainLayout({ children }) {
   const {
     token: { colorBgContainer },
@@ -23,7 +20,7 @@ export default function MainLayout({ children }) {
           {children}</Content>
         </Layout>
       </Content>
-      <div className="bg-gray-100  flex items-center justify-center w-full px-3">
+      <div className="bg-violet-100  flex items-center justify-center w-full px-3">
         <Footer />
       </div>
     
