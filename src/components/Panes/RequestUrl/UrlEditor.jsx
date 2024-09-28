@@ -60,7 +60,7 @@ export default function UrlEditor({
       </form>
 
       <span className="bg-violet-100 rounded-lg flex px-3 py-3 mt-2 w-full">
-      <InfoCircleOutlined className='text-violet-500' /> <p className=" text-gray-500 ml-2 text-xs font-semibold">Please dont forgot to add your Api Key to the Request Header and you fin it in your Dashboard <a href="https://santechapihubs.vercel.app/dashboard/apis" className="text-violet-500 underline">link</a>.</p>
+        <InfoCircleOutlined className='text-violet-500' /> <p className=" text-gray-500 ml-2 text-xs font-semibold">Please dont forgot to add your Api Key to the Request Header and you can find it in your Dashboard <a href="https://santechapihubs.vercel.app/dashboard/apis" className="text-violet-500 underline">link</a>.</p>
       </span>
     </>
   );

@@ -4,6 +4,7 @@ import './App.css';
 import App from './App';
 import * as serviceWorker from './serviceWorkerRegistration';
 import axios from 'axios';
+import RoutesDm from './Routes';
 
 const updateEndTime = (response) => {
   response.customData = response.customData || {};
@@ -25,7 +26,7 @@ axios.interceptors.response.use(updateEndTime, (e) => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RoutesDm />
   </React.StrictMode>
 );
 

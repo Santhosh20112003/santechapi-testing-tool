@@ -38,6 +38,8 @@ export default function KeyValuePane({ paneValue, setPaneValue }) {
       <KeyValueEditor
         key={keyPair.id}
         keyPair={keyPair}
+        keyValueid={keyPair.keyItem}
+        tokenValue={keyPair.valueItem}
         setKeyPair={(keyPairValue) => onKeyPairUpdate(keyPairValue)}
         onKeyPairRemove={() => onKeyPairRemove(keyPair)}
       />

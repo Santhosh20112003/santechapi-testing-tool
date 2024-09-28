@@ -4,7 +4,7 @@ import axios from 'axios';
 import { convertKeyValueToObject } from '../../../utils/helpers';
 import UrlEditor from '../../Panes/RequestUrl/UrlEditor';
 import RequestTabGroup from '../../Tab-Groups/RequestTabGroup';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { useParams } from "react-router-dom";
 
 const keyPairInitState = [
   {
@@ -15,10 +15,21 @@ const keyPairInitState = [
 ];
 
 export default function Request({ setResponse, setLoading, loading }) {
-  const [url, setUrl] = useState('https://santechapi.vercel.app/weather/location/chennai');
+  const { url: rawUrl, token: rawToken } = useParams();
+  const [url, setUrl] = useState(rawUrl ? atob(rawUrl) : "https://santechapi.vercel.app/weather/location/chennai");
   const [reqMethod, setReqMethod] = useState('GET');
   const [queryParams, setQueryParams] = useState(keyPairInitState);
-  const [headers, setHeaders] = useState(keyPairInitState);
+  const [headers, setHeaders] = useState(rawToken ? [
+    {
+      id: uuidv4(),
+      keyItem: 'token',
+      valueItem: atob(rawToken),
+    },
+  ] : [{
+    id: uuidv4(),
+    keyItem: 'token',
+    valueItem: "",
+  }]);
   const [body, setBody] = useState('{\n\t\n}');
 
   const handleOnInputSend = async (e) => {
@@ -33,15 +44,22 @@ export default function Request({ setResponse, setLoading, loading }) {
     } catch (e) {
       alert('Something is wrong with the JSON data.');
     }
+
     if (!url.includes("santechapi.vercel.app")) {
-      setResponse({ data: "Request to this domain is allowed only for: https://santechapi.vercel.app/",headers:{
-        "Error":"Only SanTech API URLs are supported"
-      },status:400,customData:{
-        time:0
-      } });
+      setResponse({
+        data: "Request to this domain is allowed only for: https://santechapi.vercel.app/",
+        headers: {
+          "Error": "Only SanTech API URLs are supported"
+        },
+        status: 400,
+        customData: {
+          time: 0
+        }
+      });
       setLoading(false);
       return false;
     }
+
     try {
       const response = await axios({
         url: url,
@@ -58,6 +76,7 @@ export default function Request({ setResponse, setLoading, loading }) {
 
     setLoading(false);
   };
+
   return (
     <>
       <UrlEditor
@@ -67,13 +86,12 @@ export default function Request({ setResponse, setLoading, loading }) {
         setReqMethod={setReqMethod}
         onInputSend={handleOnInputSend}
       />
-     
       <RequestTabGroup
         queryParams={queryParams}
         setQueryParams={setQueryParams}
         headers={headers}
         setHeaders={setHeaders}
-        body={'{\n\t\n}'}
+        body={body}
         setBody={setBody}
       />
     </>

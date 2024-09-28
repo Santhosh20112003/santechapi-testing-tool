@@ -1,5 +1,4 @@
-import { AppstoreOutlined, CheckSquareOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, theme } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import React from 'react';
 import Navbar from './Navbar/Navbar';
