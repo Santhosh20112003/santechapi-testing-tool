@@ -9,7 +9,7 @@ export default function Navbar() {
       <span class="ml-3 text-xl text-gray-500">SanTechApi Hub </span>
     </a>
     <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2024 SanTech Api —
-      <a href="https://santhosh-technologies.netlify.app/" class="text-gray-600 active:text-violet-400 ml-1" rel="noopener noreferrer" target="_blank">@Santhosh Technologies</a>
+      <a href="https://santechh.vercel.app" class="text-gray-600 active:text-violet-400 ml-1" rel="noopener noreferrer" target="_blank">@SanTech</a>
     </p>
   </div>
 </footer>
